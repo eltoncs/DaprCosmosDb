@@ -1,0 +1,25 @@
+apiVersion: dapr.io/v1alpha1
+kind: Component
+metadata:
+  name: cosmosdb
+  namespace: default
+spec:
+  type: bindings.azure.cosmosdb
+  version: v1
+  metadata:
+    - name: url
+      value: https://<your-cosmos-account>.documents.azure.com:443/
+    - name: masterKey
+      value: <your-cosmos-db-key>
+    - name: database
+      value: <your-database-name>
+    - name: collection
+      value: <your-collection-name>
+    - name: partitionKey
+      value: id
+    - name: createIfNotExists
+      value: true
+    - name: operation
+      value: create
+auth:
+  secretStore: env
